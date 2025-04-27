@@ -8,6 +8,7 @@ import os
 from glob import glob
 import matplotlib.pyplot as plt
 from pathlib import Path
+import pandas as pd
 
 """
 functions
@@ -48,8 +49,8 @@ cv2.destroyWindow("Image with ROI")
 
 # Abrir e Ler todos os Frames
 
-diff_expiration_set=np.zeros(4)
-diff_inspiration_set=np.zeros(4)
+diff_expiration_set=np.zeros(3)
+diff_inspiration_set=np.zeros(3)
 
 for set in range(1,4):
 
@@ -125,12 +126,19 @@ for set in range(1,4):
     
         diff_inspiration_trial[trial-1]=sum/len(inspiration_frames)
 
-    diff_expiration_set[set]=np.sum(diff_expiration_trial)/files_num
-    diff_inspiration_set[set]=np.sum(diff_inspiration_trial)/files_num
+    diff_expiration_set[set-1]=np.sum(diff_expiration_trial)/files_num
+    diff_inspiration_set[set-1]=np.sum(diff_inspiration_trial)/files_num
 
 
-print(diff_expiration_set)
-print(diff_inspiration_set)
+data = {
+    'Set 1': [expiration_data[0], inspiration_data[0]],
+    'Set 2': [expiration_data[1], inspiration_data[1]],
+    'Set 3': [expiration_data[2], inspiration_data[2]],
+}
+
+df = pd.DataFrame(data, index=['Expiration', 'Inspiration'])
+
+print(df)
 
 
 
