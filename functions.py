@@ -56,16 +56,3 @@ def peak_detection(signal,type):
         print("Error: Inserted Type does not exist")
 
     return peak_time
-
-def diff_calc(signal,type):
-
-    if type=="expiration":
-        peak_time=scipy.signal.find_peaks(signal)[0]
-    elif type == "inspiration":
-        peak_time=scipy.signal.find_peaks(-signal)[0]
-    else:
-        print("Error: Inserted Type does not exist")
-    
-    frames=peak_time*33
-
-    return frames
