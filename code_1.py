@@ -100,7 +100,6 @@ for set in range(1,4):
         impedance_signal_left=impedance_calc(image_array_left)
         impedance_signal_right=impedance_calc(image_array_right)
 
-    
 
         processed_signal_left=processing(impedance_signal_left)
         processed_signal_right=processing(impedance_signal_right)
@@ -128,6 +127,9 @@ for set in range(1,4):
 
     diff_expiration_set[set-1]=np.sum(diff_expiration_trial)/files_num
     diff_inspiration_set[set-1]=np.sum(diff_inspiration_trial)/files_num
+
+expiration_data=diff_expiration_set
+inspiration_data=diff_inspiration_set
 
 
 data = {
