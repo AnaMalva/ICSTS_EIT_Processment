@@ -56,7 +56,7 @@ for set in range(1,5):
 
     print(set)
 
-    path_set_file="C:/Users/anama/OneDrive/Ambiente de Trabalho/UNI/Semestre2/ICSTS/Task3/imgs/set_0"+str(set)
+    path_set_file="C:/Users/anama/OneDrive/Ambiente de Trabalho/UNI/Semestre2/ICSTS/Task3/ICSTS_EIT_Processment/Images/set_0"+str(set)
 
     items = os.listdir(path_set_file)
     files_num = len([item for item in items if os.path.isdir(os.path.join(path_set_file, item))])
@@ -69,9 +69,9 @@ for set in range(1,5):
         print(str(trial))
 
         if trial > 9:
-            images_file=sorted(glob("C:/Users/anama/OneDrive/Ambiente de Trabalho/UNI/Semestre2/ICSTS/Task3/imgs/set_0"+str(set)+"/trial_"+str(trial)+'/*.png'))
+            images_file=sorted(glob("C:/Users/anama/OneDrive/Ambiente de Trabalho/UNI/Semestre2/ICSTS/Task3/ICSTS_EIT_Processment/Images/set_0"+str(set)+"/trial_"+str(trial)+'/*.png'))
         else:
-            images_file=sorted(glob("C:/Users/anama/OneDrive/Ambiente de Trabalho/UNI/Semestre2/ICSTS/Task3/imgs/set_0"+str(set)+"/trial_0"+str(trial)+'/*.png'))
+            images_file=sorted(glob("C:/Users/anama/OneDrive/Ambiente de Trabalho/UNI/Semestre2/ICSTS/Task3/ICSTS_EIT_Processment/Images/set_0"+str(set)+"/trial_0"+str(trial)+'/*.png'))
 
 
         sample_image_left = apply_RoI(images_file[0], r_left)
