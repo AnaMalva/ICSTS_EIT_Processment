@@ -52,7 +52,7 @@ cv2.destroyWindow("Image with ROI")
 diff_expiration_set=np.zeros(3)
 diff_inspiration_set=np.zeros(3)
 
-for set in range(1,3):
+for set in range(1,5):
 
     print(set)
 
@@ -143,7 +143,7 @@ data = {
     'set 1': [expiration_data[0], inspiration_data[0]],
     'set 2': [expiration_data[1], inspiration_data[1]],
     'set 3': [expiration_data[2], inspiration_data[2]],
-    #'set 4': [expiration_data[3], inspiration_data[3]],
+    'set 4': [expiration_data[3], inspiration_data[3]],
     #'set 5': [expiration_data[4], inspiration_data[4]],
     #'set 6': [expiration_data[5], inspiration_data[5]],
     #'set 7': [expiration_data[6], inspiration_data[6]],
