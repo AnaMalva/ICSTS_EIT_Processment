@@ -75,7 +75,7 @@ for set in range(1,3):
 
 
         sample_image_left = apply_RoI(images_file[0], r_left)
-        sample_image_right = apply_RoI(images_file[0], r_left)
+        sample_image_right = apply_RoI(images_file[0], r_right)
 
         # Example shape from first image
         sample_array_left = np.array(sample_image_left)
