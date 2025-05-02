@@ -23,7 +23,7 @@ Definição da RoI
 """
 
 # Abrir e Ler um Frame
-path_frame="C:/Users/anama/OneDrive/Ambiente de Trabalho/UNI/Semestre2/ICSTS/Task3/ICSTS_EIT_Processment/set_01/trial_02/frame_004.png"
+path_frame="C:/Users/anama/OneDrive/Ambiente de Trabalho/UNI/Semestre2/ICSTS/Task3/ICSTS_EIT_Processment/Images/set_01/trial_01/frame_004.png"
 image_test = cv2.imread(path_frame)
 
 
@@ -49,8 +49,8 @@ cv2.destroyWindow("Image with ROI")
 
 # Abrir e Ler todos os Frames
 
-diff_expiration_set=np.zeros(3)
-diff_inspiration_set=np.zeros(3)
+diff_expiration_set=np.zeros(4)
+diff_inspiration_set=np.zeros(4)
 
 for set in range(1,5):
 
@@ -69,7 +69,7 @@ for set in range(1,5):
         print(str(trial))
 
         if trial > 9:
-            images_file=sorted(glob("C:/Users/anama/OneDrive/Ambiente de Trabalho/UNI/Semestre2/ICSTS/Task3/ICSTS_EIT_Processment/Images/set_0"+str(set)+"/trial_"+str(trial)+'/*.png'))
+            images_file=sorted(glob("C:/Users/anama/OneDrive/Ambiente de Trabalho/UNI/Semestre2/ICSTS/Task3/ICSTS_EIT_Processment/Images/set_"+str(set)+"/trial_"+str(trial)+'/*.png'))
         else:
             images_file=sorted(glob("C:/Users/anama/OneDrive/Ambiente de Trabalho/UNI/Semestre2/ICSTS/Task3/ICSTS_EIT_Processment/Images/set_0"+str(set)+"/trial_0"+str(trial)+'/*.png'))
 
@@ -138,6 +138,11 @@ for set in range(1,5):
 expiration_data=diff_expiration_set
 inspiration_data=diff_inspiration_set
 
+
+print("The following patients should be evaluated through other techniques of diagnosis:\n")
+for patient in range(len(expiration_data)):
+    if expiration_data[patient] > 0.5 or inspiration_data[patient] > 0.5:
+        print("patient"+str(patient))
 
 data = {
     'set 1': [expiration_data[0], inspiration_data[0]],
