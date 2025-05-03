@@ -52,6 +52,17 @@ cv2.destroyWindow("Image with ROI")
 diff_expiration_set=np.zeros(4)
 diff_inspiration_set=np.zeros(4)
 
+
+sample_image_left = apply_RoI(path_frame, r_left)
+sample_image_right = apply_RoI(path_frame, r_right)
+
+# Example shape from first image
+sample_array_left = np.array(sample_image_left)
+sample_array_right = np.array(sample_image_right)
+
+height_l, width_l, channels_l = sample_array_left.shape
+height_r, width_r, channels_r = sample_array_right.shape
+
 for set in range(1,5):
 
     print(set)
@@ -69,20 +80,9 @@ for set in range(1,5):
         print(str(trial))
 
         if trial > 9:
-            images_file=sorted(glob("C:/Users/anama/OneDrive/Ambiente de Trabalho/UNI/Semestre2/ICSTS/Task3/ICSTS_EIT_Processment/Images/set_"+str(set)+"/trial_"+str(trial)+'/*.png'))
+            images_file=sorted(glob("C:/Users/anama/OneDrive/Ambiente de Trabalho/UNI/Semestre2/ICSTS/Task3/ICSTS_EIT_Processment/Images/set_0"+str(set)+"/trial_"+str(trial)+'/*.png'))
         else:
             images_file=sorted(glob("C:/Users/anama/OneDrive/Ambiente de Trabalho/UNI/Semestre2/ICSTS/Task3/ICSTS_EIT_Processment/Images/set_0"+str(set)+"/trial_0"+str(trial)+'/*.png'))
-
-
-        sample_image_left = apply_RoI(images_file[0], r_left)
-        sample_image_right = apply_RoI(images_file[0], r_right)
-
-        # Example shape from first image
-        sample_array_left = np.array(sample_image_left)
-        sample_array_right = np.array(sample_image_right)
-
-        height_l, width_l, channels_l = sample_array_left.shape
-        height_r, width_r, channels_r = sample_array_right.shape
 
         image_array_left = np.zeros((len(images_file), height_l, width_l, channels_l), dtype=np.uint8)
 
@@ -99,7 +99,6 @@ for set in range(1,5):
         
         impedance_signal_left=impedance_calc(image_array_left)
         impedance_signal_right=impedance_calc(image_array_right)
-
 
         processed_signal_left=processing(impedance_signal_left)
         processed_signal_right=processing(impedance_signal_right)
