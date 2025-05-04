@@ -35,7 +35,8 @@ image_test = cv2.imread(path_frame)
 #r_right=cv2.selectROI("select the area right", image)
 #cv2.destroyWindow("select the area right")
 
-r_left=220, 169, 194, 339 # Coordenadas obtidas com zona anterior comentada
+# Coordenadas obtidas com zona anterior comentada
+r_left=220, 169, 194, 339 
 r_right=498, 169, 194, 339
 
 # Representação da zona RoI do pulmão esquero
@@ -48,7 +49,6 @@ cv2.waitKey(0)
 cv2.destroyWindow("Image with ROI")
 
 # Abrir e Ler todos os Frames
-
 diff_expiration_set=np.zeros(4)
 diff_inspiration_set=np.zeros(4)
 
@@ -124,15 +124,8 @@ for set in range(1,5):
     
         diff_inspiration_trial[trial-1]=sum/len(inspiration_frames)
 
-        #if trial==1:
-            #expirations_values=diff_expiration_trial
-            #inspiration_values=diff_inspiration_trial
-
     diff_expiration_set[set-1]=np.sum(diff_expiration_trial)/files_num
     diff_inspiration_set[set-1]=np.sum(diff_inspiration_trial)/files_num
-
-#expiration_data=expirations_values
-#inspiration_data=inspiration_values
 
 expiration_data=diff_expiration_set
 inspiration_data=diff_inspiration_set
@@ -148,9 +141,7 @@ data = {
     'set 2': [expiration_data[1], inspiration_data[1]],
     'set 3': [expiration_data[2], inspiration_data[2]],
     'set 4': [expiration_data[3], inspiration_data[3]],
-    #'set 5': [expiration_data[4], inspiration_data[4]],
-    #'set 6': [expiration_data[5], inspiration_data[5]],
-    #'set 7': [expiration_data[6], inspiration_data[6]],
+    'set 5': [expiration_data[4], inspiration_data[4]],
 }
 
 df = pd.DataFrame(data, index=['Expiration', 'Inspiration'])

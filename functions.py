@@ -17,12 +17,10 @@ def impedance_calc(image_array):
     impedance_means = []
 
     for image in image_array:
-    
-        # Convert to grayscale if needed, or to HSV to isolate intensity
-        hsv = cv2.cvtColor(image, cv2.COLOR_BGR2HSV)
-        intensity = hsv[:, :, 2]  # Value channel often correlates with impedance
 
-        # Compute variance of pixel values (impedance variance estimate)
+        hsv = cv2.cvtColor(image, cv2.COLOR_BGR2HSV)
+        intensity = hsv[:, :, 2] 
+
         mean_intensity = np.mean(intensity)
         impedance_means.append(mean_intensity)
     
@@ -30,16 +28,13 @@ def impedance_calc(image_array):
 
 def processing(signal):
     
-    # Mudança da Frequência
     signal = np.array(signal)
     fps = 33
     num_seconds = len(signal) // fps
     signal_freq = signal[:num_seconds * fps].reshape(num_seconds, fps).mean(axis=1)
 
-    # Normalização
     normalized_signal = (signal_freq - np.mean(signal_freq)) / np.std(signal_freq)
 
-    # Filtrar
     smoothed_signal = gaussian_filter1d(normalized_signal, sigma=2)
 
     processed_signal=smoothed_signal
