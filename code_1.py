@@ -49,8 +49,8 @@ cv2.waitKey(0)
 cv2.destroyWindow("Image with ROI")
 
 # Abrir e Ler todos os Frames
-diff_expiration_set=np.zeros(4)
-diff_inspiration_set=np.zeros(4)
+diff_expiration_set=np.zeros(5)
+diff_inspiration_set=np.zeros(5)
 
 
 sample_image_left = apply_RoI(path_frame, r_left)
@@ -63,7 +63,7 @@ sample_array_right = np.array(sample_image_right)
 height_l, width_l, channels_l = sample_array_left.shape
 height_r, width_r, channels_r = sample_array_right.shape
 
-for set in range(1,5):
+for set in range(1,6):
 
     print(set)
 
